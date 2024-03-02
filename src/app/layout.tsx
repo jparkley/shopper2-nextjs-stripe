@@ -2,11 +2,14 @@ import './globals.css'
 import type { Metadata } from 'next'
 // import { Inter } from 'next/font/google'
 // import { Raleway } from 'next/font/google'
-import { Source_Sans_3 } from 'next/font/google'
+// import { Source_Sans_3 } from 'next/font/google'
+import { Noto_Sans, Open_Sans } from 'next/font/google'
 
-const mainFont = Source_Sans_3({ 
+const mainFont = Open_Sans({ 
   subsets: ['latin'],
   display: "swap", 
+  weight: ['300','400', '500', '700'],
+  style: ['normal', 'italic'],
 })
 
 export const metadata: Metadata = {
