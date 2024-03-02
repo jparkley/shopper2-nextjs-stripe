@@ -9,6 +9,8 @@ export default function Home() {
         <NavBar />
 
         <div className="flex flex-col items-center justify-between p-2">
+          <div id="react-modals" />
+          <div>Open Modal</div>
           <div className="flex justify-center p-6 flex-col">
             <h2 className="text-3xl leading-5 font-light">
               <span className="text-4xl font-normal">Shop Now</span> with the most <em>reliable</em> 
@@ -24,8 +26,9 @@ export default function Home() {
                 <Product key={idx} product={product} />
               ))}
             </div>
-          </div>          
+          </div>
         </div>
+        
     </main>
   )
 }

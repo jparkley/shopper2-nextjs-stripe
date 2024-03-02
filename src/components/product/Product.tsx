@@ -14,14 +14,13 @@ const Product: React.FC<ProductProps> = ( { product} ) => {
       <h2 className="text-xl font-semibold">{product.name}</h2>
       <p>{product.description}</p>
       <div className="flex flex-row items-center justify-between p-2">
-      <p>${product.price.toFixed(2)}</p>
-      <button 
-        disabled={false}
-        onClick={() => {}}
-        className="text-sm text-cyan-600 font-semibold bg-slate-50 m-2 p-2 shadow-sm rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-        {true ? "Added to Cart" : "Add to Cart"}
-      </button>
-
+        <p>${product.price.toFixed(2)}</p>
+        <button 
+          disabled={false}
+          onClick={() => {}}
+          className="text-sm text-cyan-600 font-semibold bg-slate-50 m-2 p-2 shadow-sm rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          {true ? "Added to Cart" : "Add to Cart"}
+        </button>
       </div>
     </div>
     

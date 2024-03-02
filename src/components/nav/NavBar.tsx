@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { navRoutes as routes } from "./constants"
+import CartSummary from "../checkout/CartSummary";
 
 export default function NavBar () {
 
@@ -31,8 +32,8 @@ export default function NavBar () {
             <div className="" id="">
               <div className="">
                   <p>Cart Summary & Checkout</p>
-                {/* <CartSummary />
-                <CheckoutCart /> */}
+                <CartSummary />
+                {/* <CheckoutCart /> */}
               </div>
             </div>
           </div>
