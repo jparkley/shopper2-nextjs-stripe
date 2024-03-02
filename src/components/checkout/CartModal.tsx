@@ -21,24 +21,24 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
   return (
     <>
     <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-teal-100 active:bg-teal-200 text-neutral-950 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
-      ></button>
+      >Cart Modal Test</button>
       {/* // <Modal isOpen={isOpen} onRequestClose={toggleModal} contentLabel="Cart Modal" closeTimeoutMS={500} className="cart-modal" overlayClassName="cart-overlay"> */}
       {showModal && 
-      <Modal isOpen={isOpen} contentLabel="Cart Modal" closeTimeoutMS={500} className="cart-modal" overlayClassName="cart-overlay"
-        // ariaHideApp={false}
-      >
-        <div className="">
+      // <Modal isOpen={isOpen} contentLabel="Cart Modal" closeTimeoutMS={500} className="cart-modal" overlayClassName="cart-overlay"
+      //   // ariaHideApp={false}
+      // >
+        <div className="fixed inset-0 flex flex-col justify-center items-center bg-gray-900 bg-opacity-50 z-50">
           <div className="relative inline-flex justify-between">
-            <div className="relative flex flex-col bg-red-100">
+            <div className="relative flex flex-col bg-orange-50 p-10">
               <div className="modal-header d-inline-flex justify-content-between">
-                <span className="modal-title me-3">Cart Summary</span>
+                <h5 className="text-lg font-semibold">Cart Summary</h5>
                 <span className="d-flex align-items-center">
                   <strong>
                     {/* {formattedTotalPrice} ({cartCount} Items) */}
-                    TODO: how many
+                    TODO: update design
                   </strong>
                   {/* <button type="button" className="btn-close ms-1" aria-label="Close" onClick={toggleModal}></button> */}
                 </span>
@@ -56,18 +56,18 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
                 </button> */}
                 <button 
                   type="button" 
-                  className="btn btn-primary text-dark" 
+                  className="bg-teal-100 active:bg-teal-200 text-neutral-950 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
                   data-bs-dismiss="modal" 
                   // onClick={toggleModal}
                   onClick={() => setShowModal(false)}
                 >
-                Keep Shopping(close modal)
+                Close Modal
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </Modal>
+      // </Modal>
       }
     </>
   )

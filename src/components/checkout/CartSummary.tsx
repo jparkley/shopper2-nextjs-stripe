@@ -11,9 +11,7 @@ const CartSummary = () => {
     <>
       <div onClick={toggleModal}>
         {/* <FaShoppingCart /> {formattedTotalPrice} ({cartCount}) */}
-        click to open modal?
       </div>
-
       <CartModal isOpen={isOpen} />
     </>
   )
