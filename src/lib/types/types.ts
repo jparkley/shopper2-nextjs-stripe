@@ -10,3 +10,9 @@ export interface IProduct {
   description_long:string;
   image: string;
 }
+
+export interface ICartProduct {
+  id: string;
+  price: number;
+  quantity: number;
+}
