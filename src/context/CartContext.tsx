@@ -31,6 +31,7 @@ export const CartContextProvider:React.FC<ICartContextProviderProps> = ({childre
     } else {
       setCart([...cart, {
         id: product.id,
+        name: product.name,
         price: product.price,
         quantity: 1,        
       }])

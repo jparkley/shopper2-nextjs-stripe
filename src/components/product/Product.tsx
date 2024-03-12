@@ -2,8 +2,7 @@
 
 import { IProduct } from "@/lib/types/types"
 import Link from "next/link";
-import { useContext } from "react";
-import { CartContext, useCart } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 
 interface ProductProps {
   product: IProduct;

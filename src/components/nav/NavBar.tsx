@@ -17,7 +17,7 @@ export default function NavBar () {
           <Link href="/">
             <div className="d-flex justify-content-between">
               {/* <img src={logo} width="24px" /> */}
-              <div className="m-2">
+              <div className="m-2 pt-1">
                 <p className="text-xl"><strong>Shopper v2</strong></p>
               </div>
             </div>
@@ -31,7 +31,6 @@ export default function NavBar () {
 
             <div className="" id="">
               <div className="">
-                  <p>Cart Summary & Checkout</p>
                 <CartSummary />
                 {/* <CheckoutCart /> */}
               </div>
