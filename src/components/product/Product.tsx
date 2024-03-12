@@ -2,12 +2,17 @@
 
 import { IProduct } from "@/lib/types/types"
 import Link from "next/link";
+import { useContext } from "react";
+import { CartContext, useCart } from "../../context/CartContext";
 
 interface ProductProps {
   product: IProduct;
 }
 
 const Product: React.FC<ProductProps> = ( { product} ) => {
+
+  const { cart, addToCart, removeFromCart  } = useCart();
+
   return (
     <div className="border rounded-sms p-4 shadow-sm md-5">
       <Link href={`/`} />
@@ -17,7 +22,7 @@ const Product: React.FC<ProductProps> = ( { product} ) => {
         <p>${product.price.toFixed(2)}</p>
         <button 
           disabled={false}
-          onClick={() => {}}
+          onClick={() => addToCart(product)}
           className="text-sm text-cyan-600 font-semibold bg-slate-50 m-2 p-2 shadow-sm rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
           {true ? "Added to Cart" : "Add to Cart"}
         </button>

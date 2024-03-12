@@ -1,11 +1,11 @@
 'use client'
 
 import { ReactNode, createContext, useContext, useState} from "react";
-import Product from "../product/Product";
+import Product from "../components/product/Product";
 import { ICartProduct, IProduct } from "@/lib/types/types";
-import Cart from "./Cart";
+import Cart from "../components/checkout/Cart";
 
-interface ICartContextProps {
+interface ICartContextType {
   cart: ICartProduct[];
   addToCart: (product: IProduct) => void;
   removeFromCart: (productId: string) => void;
@@ -15,9 +15,10 @@ interface ICartContextProviderProps {
   children: ReactNode;
 }
 
-const CartContext = createContext<ICartContextProps | unknown>(undefined);
+export const CartContext = createContext<ICartContextType | unknown>(undefined);
 
 export const CartContextProvider:React.FC<ICartContextProviderProps> = ({children}) => {
+
   const [cart, setCart] = useState<ICartProduct[]>([]);
 
   const addToCart = (product: IProduct) => {
@@ -36,7 +37,12 @@ export const CartContextProvider:React.FC<ICartContextProviderProps> = ({childre
     }
   }
 
-  const removeFromCart = (productId: number) {}
+  const removeFromCart = (productId: number) => {
+    const updatedCart = cart.filter((item) => Number(item.id) !== productId);
+    setCart(updatedCart);
+  }
+
+  console.log('--------- in Context: cart', cart)
 
   return (
     <CartContext.Provider value={{
@@ -48,4 +54,12 @@ export const CartContextProvider:React.FC<ICartContextProviderProps> = ({childre
     </CartContext.Provider>
   );
 
+}
+
+export const useCart = (): ICartContextType => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("Error: CartContextProvider not found when calling useCart");
+  }
+  return context as ICartContextType;
 }
