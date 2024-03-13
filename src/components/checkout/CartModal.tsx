@@ -11,6 +11,8 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
    const { cart: cartItems } = useCart();
   console.log('==== cart in modal', cartItems)
 
+  const totalAmount = cartItems.reduce((total, item) => total + (item.quantity * item.price), 0)
+
   return (
     <>
     <button
@@ -38,13 +40,14 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
                 )}
               </div>
 
-              <span className="d-flex align-items-center">
-                  <strong>
-                    {/* TODO: display total price */}
-                    {/* {formattedTotalPrice} ({cartCount} Items) */}
-                  </strong>
-                  {/* <button type="button" className="btn-close ms-1" aria-label="Close" onClick={toggleModal}></button> */}
-              </span>
+              { (cartItems.length > 0) && 
+                  <div className="flex justify-end mt-6 mr-20">
+                  {/* <button type="button" className="btn btn-primary text-dark" onClick={handleCheckout}>
+                    <strong>Checkout</strong>
+                  </button> */}
+                  <p className="font-base">Total: ${totalAmount}</p>
+                  </div>
+              }
 
               <div className="flex justify-end mt-6">
                 {/* <button type="button" className="btn btn-primary text-dark" onClick={handleCheckout}>
