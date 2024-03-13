@@ -14,7 +14,9 @@ const Product: React.FC<ProductProps> = ( { product} ) => {
 
   return (
     <div className="border rounded-sms p-4 shadow-sm md-5">
-      <Link href={`/`} />
+      <Link href={`/products/${product.id}`}>
+        <img className="" src={`./images/products/${product.image}`} alt={product.name} />
+      </Link>
       <h2 className="text-xl font-semibold">{product.name}</h2>
       <p>{product.description}</p>
       <div className="flex flex-row items-center justify-between p-2">
