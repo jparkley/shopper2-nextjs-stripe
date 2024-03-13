@@ -1,14 +1,14 @@
 'use client'
 
 import { ReactNode, createContext, useContext, useState} from "react";
-import Product from "../components/product/Product";
 import { ICartProduct, IProduct } from "@/lib/types/types";
 import Cart from "../components/checkout/Cart";
 
 interface ICartContextType {
   cart: ICartProduct[];
   addToCart: (product: IProduct) => void;
-  removeFromCart: (productId: string) => void;
+  increaseQuantity: (productId: string) => void;
+  decreaseQuantity: (productId: string) => void;
 }
 
 interface ICartContextProviderProps {
@@ -38,9 +38,26 @@ export const CartContextProvider:React.FC<ICartContextProviderProps> = ({childre
     }
   }
 
-  const removeFromCart = (productId: number) => {
-    const updatedCart = cart.filter((item) => Number(item.id) !== productId);
+  // const removeFromCart = (productId: string) => {
+  //   const updatedCart = cart.filter((item) => item.id !== productId);
+  //   setCart(updatedCart);
+  // }
+
+  const increaseQuantity = (productId: string) => {
+    const updatedCart = cart.map((item) => (
+      item.id === productId ? {...item, quantity: item.quantity + 1} : item
+    ))
     setCart(updatedCart);
+  }
+
+  const decreaseQuantity = (productId: string) => {
+    const updatedCart = cart.map((item) =>
+      item.id === productId ?
+      {...item, quantity: item.quantity > 0 ? item.quantity - 1 : 0} : item
+    )
+    // remove item from cart when its quantity is 0
+    const filteredCart = updatedCart.filter((item) => item.quantity > 0);
+    setCart(filteredCart);
   }
 
   console.log('--------- in Context: cart', cart)
@@ -49,7 +66,8 @@ export const CartContextProvider:React.FC<ICartContextProviderProps> = ({childre
     <CartContext.Provider value={{
       cart,
       addToCart,
-      removeFromCart,
+      increaseQuantity,
+      decreaseQuantity,
     }}>
       {children}
     </CartContext.Provider>

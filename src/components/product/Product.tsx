@@ -1,7 +1,7 @@
 'use client';
 
-import { IProduct } from "@/lib/types/types"
 import Link from "next/link";
+import { IProduct } from "@/lib/types/types"
 import { useCart } from "../../context/CartContext";
 
 interface ProductProps {
@@ -10,7 +10,7 @@ interface ProductProps {
 
 const Product: React.FC<ProductProps> = ( { product} ) => {
 
-  const { cart, addToCart, removeFromCart  } = useCart();
+  const { addToCart } = useCart();
 
   return (
     <div className="border rounded-sms p-4 shadow-sm md-5">

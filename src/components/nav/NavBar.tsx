@@ -24,8 +24,8 @@ export default function NavBar () {
           </Link>
           <div className="flex grow items-center justify-between p-1">
             <div className="pr-6">
-              {routes.map((route) => (
-                  <Link key={route.href} href={route.href} className="text-stone-600 p-2 text-base">{route.label}</Link>
+              {routes.map((route, idx) => (
+                  <Link key={idx} href={route.href} className="text-stone-600 p-2 text-base">{route.label}</Link>
               ))}
             </div>
 
