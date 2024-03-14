@@ -55,6 +55,7 @@ export const CartContextProvider:React.FC<ICartContextProviderProps> = ({childre
       item.id === productId ?
       {...item, quantity: item.quantity > 0 ? item.quantity - 1 : 0} : item
     )
+  
     // remove item from cart when its quantity is 0
     const filteredCart = updatedCart.filter((item) => item.quantity > 0);
     setCart(filteredCart);
