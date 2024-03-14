@@ -7,7 +7,7 @@ const products: IProduct[] = [
     name: "Glow Water Serum 12 Oz",
     subtitle: "Organic Skin Care, Natural Beauty",
     sku: "COS-SRM-GLW-12",
-    price: 32.95,
+    price: 35.00,
     currency: "USD",
     description: "Our next generation moisture serum, Glow Water Serum, will repair dry skin.  Made in Germany, for dehydrated skin.",
     description_long: "Our next generation moisture serum, Glow Water Serum, will repair dry skin.  Made in Germany, designed for severely dehydrated skin.  Our next generation moisture serum, Glow Water Serum, will repair dry skin.  Made in Germany, designed for severely dehydrated skin.",

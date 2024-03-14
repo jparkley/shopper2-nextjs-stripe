@@ -8,8 +8,8 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
 
   const [showModal, setShowModal] = useState(isOpen);
 
-  const { cart: cartItems } = useCart();
-  console.log('==== cart in modal', cartItems)
+  const { cart: cartProducts } = useCart();
+  console.log('==== cart in modal', cartProducts)
 
   const handleCheckout = async () => {
     await fetch("http://localhost:3001/api/checkout/", {
@@ -17,7 +17,7 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ products: cartItems })
+      body: JSON.stringify({ data: cartProducts })
     }).then((response) => {
       return response.json();
     }).then((response) => {
@@ -26,11 +26,9 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
         console.log('url---- ', response.url)
       }
     })
-
   }
 
-  const totalAmount = cartItems.reduce((total, item) => total + (item.quantity * item.price), 0)
-
+  const totalAmount = cartProducts.reduce((total, product) => total + (product.quantity * product.price), 0)  
 
   return (
     <>
@@ -48,18 +46,18 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
               </div>            
 
               <div className="">
-                { cartItems.length == 0 ? (
+                { cartProducts.length == 0 ? (
                   <div className="flex justify-center pt-8">
                     <p>Your cart is empty</p>
                   </div>
                 ) : (
-                  cartItems.map(item => (
+                  cartProducts.map(item => (
                     <CartItem key={item.id} item={item} />
                   ))
                 )}
               </div>
 
-              { (cartItems.length > 0) && 
+              { (cartProducts.length > 0) && 
                   <div className="flex justify-end mt-6 mr-20">
                   {/* <button type="button" className="btn btn-primary text-dark" onClick={handleCheckout}>
                     <strong>Checkout</strong>
@@ -72,13 +70,14 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
                 {/* <button type="button" className="btn btn-primary text-dark" onClick={handleCheckout}>
                   <strong>Checkout</strong>
                 </button> */}
-                <button 
-                  type="button" 
-                  className="bg-slate-100 active:bg-teal-200 text-neutral-950 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                  data-bs-dismiss="modal"
-                  onClick={handleCheckout}
-                > Check Out </button>
-
+                { (cartProducts.length) > 0 && (
+                  <button 
+                    type="button" 
+                    className="bg-slate-100 active:bg-teal-200 text-neutral-950 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    data-bs-dismiss="modal"
+                    onClick={handleCheckout}
+                  > Check Out </button>
+                )}
                 <button 
                   type="button" 
                   className="bg-slate-100 active:bg-teal-200 text-neutral-950 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"

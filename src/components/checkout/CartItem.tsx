@@ -23,7 +23,7 @@ const CartItem = ( { item }: { item: ICartProduct} ) => {
 
             <div className="p-3 grow">
               <p className="text-end text-sm">
-                {item.price} x {item.quantity}
+                {item.price.toFixed(2)} x {item.quantity}
               </p>
             </div>
 
