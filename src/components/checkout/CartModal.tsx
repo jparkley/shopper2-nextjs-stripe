@@ -23,6 +23,7 @@ const CartModal = ({ isOpen = true, toggleModal = true }) => {
     }).then((response) => {
       console.log('response')
       if (response.url) {
+        window.location.href = response.url;
         console.log('url---- ', response.url)
       }
     })
