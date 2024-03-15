@@ -3,29 +3,23 @@
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import CartItem from "./CartItem";
+import { QueryClient } from "@tanstack/react-query";
+import axios from "axios";
 
 const CartModal = ({ isOpen = true, toggleModal = true }) => {
 
   const [showModal, setShowModal] = useState(isOpen);
-
   const { cart: cartProducts } = useCart();
 
   const handleCheckout = async () => {
-    await fetch("http://localhost:3001/api/checkout/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ data: cartProducts })
-    }).then((response) => {
-      return response.json();
-    }).then((response) => {
-      console.log('response')
-      if (response.url) {
-        window.location.href = response.url;
-        console.log('url---- ', response.url)
-      }
-    })
+    try {
+      const { data } = await axios.post('/api/checkout/', {
+        data: cartProducts,
+      });
+      window.location.href = data.url;
+    } catch(error) {
+      console.log('Error in axios call', error)
+    }
   }
 
   const totalAmount = cartProducts.reduce((total, product) => total + (product.quantity * product.price), 0);
