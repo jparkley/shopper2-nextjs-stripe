@@ -1,7 +1,7 @@
 import { ICartProduct } from "@/lib/types/types";
 import { NextRequest, NextResponse } from "next/server";
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.NEXT_STRIPE_SECRET_KEY);
 
 const getStripeProducts = async () => {
   const allProducts = await stripe.products.list();
@@ -53,11 +53,11 @@ export const POST = async (request: NextRequest) => {
     const session = await stripe.checkout.sessions.create({
       line_items: checkoutProducts,
       mode: "payment",
-      success_url: `${process.env.URL}/success`,
-      cancel_url: `${process.env.URL}`
+      success_url: `${process.env.NEXT_URL}/success`,
+      cancel_url: `${process.env.NEXT_URL}`
     });
     return NextResponse.json({ url: session.url });
   }
 
-  return NextResponse.json({ url: `${process.env.URL}` });
+  return NextResponse.json({ url: `${process.env.NEXT_URL}` });
 }
