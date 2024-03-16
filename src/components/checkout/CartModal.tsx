@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import CartItem from "./CartItem";
-import { QueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 const CartModal = ({ isOpen = true, toggleModal = true }) => {

@@ -14,10 +14,7 @@ export const POST = async (request: NextRequest) => {
   const { data } = await request.json();
   const cartProducts: ICartProduct[] = data;
 
-  console.log('==== req.cartProducts from front', cartProducts)
-
   let stripeProducts = await getStripeProducts();
-  // console.log('==== products from stripe', stripeProducts)
 
   try {
     for (const cartProduct of cartProducts) {
@@ -52,16 +49,15 @@ export const POST = async (request: NextRequest) => {
     })
   })
 
-  console.log('===== checkoutProducts', checkoutProducts)
   if (checkoutProducts) {
     const session = await stripe.checkout.sessions.create({
       line_items: checkoutProducts,
       mode: "payment",
-      success_url: "http://localhost:3001/success",
-      cancel_url: "http://localhost:3001/cancel"
+      success_url: `${process.env.URL}/success`,
+      cancel_url: `${process.env.URL}`
     });
     return NextResponse.json({ url: session.url });
   }
 
-  return NextResponse.json({ url: "http://localhost:3001" });
+  return NextResponse.json({ url: `${process.env.URL}` });
 }
