@@ -1,6 +1,6 @@
 # Shopping Cart version 2 - ShopNow
 
-**Shopper is a simple shopping cart in React, Typescript, Next.Js, Tailwind. It utilizes payment gateway 'Stripe'.
+**ShopNow is a simple shopping cart in React, Typescript, Next.Js, Tailwind and Stripe.
 
 - Homepage: list of products
 - Product page: details of a product(under construction)
