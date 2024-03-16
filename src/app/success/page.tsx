@@ -1,12 +1,17 @@
 'use client';
 
-import React from 'react'
+import NavBar from "@/components/nav/NavBar";
 
-type Props = {}
-
-const Success = (props: Props) => {
+const Success = () => {
   return (
-    <div>Success</div>
+    <>
+      <main>
+        <NavBar />
+        <div className="flex flex-col items-center justify-between p-2 mt-10">
+          <h2 className="font-bold text-lg">Your payment was successfully processed!</h2>
+        </div>
+      </main>
+    </>
   )
 }
 
