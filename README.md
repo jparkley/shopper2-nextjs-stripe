@@ -41,6 +41,7 @@
 
 - Websockets to listen to Stripe events
 - Static pages
+- Axios or React query?
 
 ## Links
 
