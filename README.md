@@ -39,8 +39,8 @@
 
 ## TODO
 
-Websockets to listen to Stripe events
-Static pages
+- Websockets to listen to Stripe events
+- Static pages
 
 ## Links
 
