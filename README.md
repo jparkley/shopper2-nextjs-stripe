@@ -40,6 +40,7 @@
 ## TODO
 
 - Websockets to listen to Stripe events
+- Add Toast
 - Static pages
 - Axios or React query?
 
